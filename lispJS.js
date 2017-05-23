@@ -17,21 +17,17 @@ var tokenize = function(input) {
         .split(/\s+/);
 };
 
-var paranthesize = function(input, list) {
-    if (list == undefined) {
-        return paranthesize(input, []);
+var paranthesize = function(input, list = []) {
+    var token = input.shift();
+    if (token == undefined) {
+        return list.pop();
+    } else if (token == "(") {
+        list.push(paranthesize(input, []));
+        return paranthesize(input, list);
+    } else if (token == ")") {
+        return list;
     } else {
-        var token = input.shift();
-        if (token == undefined) {
-            return list.pop();
-        } else if (token == "(") {
-            list.push(paranthesize(input, []));
-            return paranthesize(input, list);
-        } else if (token == ")") {
-            return list;
-        } else {
-            return paranthesize(input, list.concat(categorize(token)));
-        }
+        return paranthesize(input, list.concat(categorize(token)));
     }
 };
 
@@ -44,6 +40,9 @@ var categorize = function(input) {
         return { type: 'symbol', value: input };
     }
 };
+
+
+
 
 
 prompt("code",

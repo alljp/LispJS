@@ -1,3 +1,15 @@
+var prompt = function(question, callback) {
+    var stdin = process.stdin,
+        stdout = process.stdout;
+
+    stdin.resume();
+    stdout.write(question);
+
+    stdin.once('data', function(data) {
+        callback(data.toString().trim());
+    });
+}
+
 var tokenize = function(input) {
     return input.replace(/\(/g, ' ( ')
         .replace(/\)/g, ' ) ')
@@ -32,3 +44,10 @@ var categorize = function(input) {
         return { type: 'symbol', value: input };
     }
 };
+
+
+prompt("code",
+    function(input) {
+        console.log(paranthesize(tokenize(input)));
+        process.exit();
+    });

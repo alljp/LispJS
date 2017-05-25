@@ -26,9 +26,7 @@ var operators = {
     '>=': function(a, b) {
         return a >= b;
     },
-    'abs': function(a) {
-        return Math.abs(a);
-    },
+
     'eq?': function(a, b) {
         return a == b;
     },
@@ -43,6 +41,25 @@ var operators = {
     },
     'length': function(a) {
         return a.length;
+    },
+    'cons': function(a, b) {
+        var arr = [a];
+        return arr.concat(b);
+    },
+    'cdr': function(a) {
+        return a[0];
+    },
+    'car': function(a) {
+        return a.slice(1);
+    },
+    'append': function(a, b) {
+        return a.concat(b);
+    },
+    'symbol?': function(a) {
+        return typeof(a) == 'string';
+    },
+    'null?': function(a) {
+        return !a || a.length == 0;
     }
 }
 

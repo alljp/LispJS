@@ -63,5 +63,10 @@ var operators = {
     }
 }
 
+var more_math_operators = ['abs', 'acos', 'asin', 'atan', 'atan2', 'ceil', 'cos', 'exp', 'floor', 'log', 'max', 'min', 'pow', 'random', 'round', 'sin', 'sqrt', 'tan'];
+
+for (let i = 0; i < more_math_operators.length; i++) {
+    operators[more_math_operators[i]] = Math[more_math_operators[i]];
+}
 
 exports.operators = operators;

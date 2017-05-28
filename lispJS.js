@@ -1,3 +1,4 @@
+const eval = require("./eval");
 const parser = require("./parser").parser;
 const tokenize = require("./parser").tokenize
 
@@ -46,5 +47,6 @@ prompt(">>",
     function(input) {
         let temp = parser(tokenize(input));
         console.log(temp);
+        console.log(eval(temp));
         process.exit();
     });

@@ -1,18 +1,18 @@
 const op = require("./operators");
 console.log(op);
-var Env = function(d) {
+var Env = function(dict) {
     var env = {};
-    var outer = d.outer || [];
-    if (d.parms.length != 0) {
-        for (var i = 0; i < d.parms.length; i += 1) {
-            env[d.parms[i]] = d.args[i];
+    var outer = dict.outer || [];
+    if (dict.parms.length != 0) {
+        for (let i = 0; i < dict.parms.length; i += 1) {
+            env[dict.parms[i]] = dict.args[i];
         }
     }
-    env.find = function(var_) {
-        if (env.hasOwnProperty(var_)) {
+    env.find = function(x) {
+        if (env.hasOwnProperty(x)) {
             return env;
         } else {
-            return outer.find(var_)
+            return outer.find(x)
         }
     }
     return env;

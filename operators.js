@@ -46,10 +46,10 @@ const operators = {
         let arr = [a];
         return arr.concat(b);
     },
-    'cdr': function(a) {
+    'car': function(a) {
         return a[0];
     },
-    'car': function(a) {
+    'cdr': function(a) {
         return a.slice(1);
     },
     'append': function(a, b) {

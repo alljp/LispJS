@@ -30,8 +30,6 @@ var eval = function(x, env) {
     } else if (x[0] == 'lambda') {
         let vars = x[1];
         let exp = x[2];
-        // console.log(vars);
-        // console.log(exp);
         return function() {
             return eval(exp, Env({ params: vars, args: arguments, outer: env }));
         }
